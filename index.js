@@ -8,7 +8,7 @@ function showCoursesInRange(courses, range) {
 
     for (let item of dataForCheck) {
         item.prices[0] === null ? item.prices[0] = 0 : null
-        item.prices[1] === null ? item.prices[1] = 500 : null
+        item.prices[1] === null ? item.prices[1] = Infinity : null
     }
 
     dataForCheck.filter((item, index) => {
@@ -36,7 +36,7 @@ let courses = [
 
 let requiredRange1 = [null, 200]; // england, russia, france, china, kazakhstan, italy, usa
 let requiredRange2 = [100, 350]; // england, russia, france, china, kazakhstan, italy, usa
-let requiredRange3 = [200, null]; // russia, france, china, kazakhstan, usa, germany
+let requiredRange3 = [200, null]; // russia, france, china, kazakhstan, italy, usa, germany
 
 console.log(showCoursesInRange(courses, requiredRange1))
 console.log(showCoursesInRange(courses, requiredRange2))
