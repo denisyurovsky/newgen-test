@@ -1,16 +1,20 @@
 function showCoursesInRange(courses, range) {
+    //результирующий массив
+    let res = []
 
+    // делаем копию, для изменения значений null и сохранения значений null в массиве courses
+    let dataForCheck = JSON.parse(JSON.stringify(courses))
+
+    //приводим значения чтобы адекватно отфильтровать
     range[0] == null ? range[0] = 0 : null
     range[1] == null ? range[1] = Infinity : null
-
-    let res = []
-    let dataForCheck = JSON.parse(JSON.stringify(courses))
 
     for (let item of dataForCheck) {
         item.prices[0] === null ? item.prices[0] = 0 : null
         item.prices[1] === null ? item.prices[1] = Infinity : null
     }
 
+    //фильтруем, т.к. индексы dataForCheck и courses одинаковы, пушим в результирующий массив объект по индексу
     dataForCheck.forEach((item, index) => {
         if (item.prices[1] >= range[0] && item.prices[0] <= range[1]) {
 
@@ -18,6 +22,7 @@ function showCoursesInRange(courses, range) {
         }
     })
 
+    //сортируем по минимальной цене
     return res
         .sort((a, b) => a.prices[0] - b.prices[0])
 }
