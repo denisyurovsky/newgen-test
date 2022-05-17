@@ -1,3 +1,13 @@
+function sortByPrice (arr, type)  {
+    return arr.sort((a, b) => {
+        if (type === 'asc') {
+            return a.prices[0] - b.prices[0]
+        } else {
+            return b.prices[0] - a.prices[0]
+        }
+    })
+}
+
 function showCoursesInRange(courses, range) {
     //результирующий массив
     let res = []
@@ -22,9 +32,7 @@ function showCoursesInRange(courses, range) {
         }
     })
 
-    //сортируем по минимальной цене
-    return res
-        .sort((a, b) => a.prices[0] - b.prices[0])
+    return sortByPrice(res, 'asc')
 }
 
 
