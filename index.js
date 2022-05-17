@@ -11,7 +11,7 @@ function showCoursesInRange(courses, range) {
         item.prices[1] === null ? item.prices[1] = Infinity : null
     }
 
-    dataForCheck.filter((item, index) => {
+    dataForCheck.forEach((item, index) => {
         if (item.prices[1] >= range[0] && item.prices[0] <= range[1]) {
 
             res.push(courses[index])
